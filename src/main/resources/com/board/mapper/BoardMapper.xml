@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.board.mapper.BoardMapper">
+	<select id="getList" resultType="com.board.domain.BoardVO">
+		select * from board order by bno desc
+	</select>
+	
+	<select id="getOneByBno" parameterType="int" resultType="com.board.domain.BoardVO">
+		select * from board where bno = #{bno}
+	</select>
+	
+	<insert id="create">
+		insert into board(title, writer, content)
+		values(#{title}, #{writer}, #{content})
+	</insert>
+	
+	<update id="update" parameterType="com.board.domain.BoardVO">
+		update board set title=#{title}, writer=#{writer}, content=#{content}, updateDate=NOW() where bno=#{bno}
+	</update>
+	
+	<delete id="delete">
+		delete from board where bno=#{bno}
+	</delete>
+	
+	<update id="updateReadCount">
+		update board set readCount = readCount + 1 where bno = #{bno}
+	</update>
+</mapper>
