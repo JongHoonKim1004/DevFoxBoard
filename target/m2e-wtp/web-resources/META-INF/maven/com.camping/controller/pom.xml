@@ -49,6 +49,18 @@
 			<artifactId>spring-test</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.23.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.23.1</version>
+		</dependency>
 
 
 		<!-- AspectJ -->
@@ -91,11 +103,11 @@
 
 		<!-- Servlet -->
 		<dependency>
-	<groupId>javax.servlet</groupId>
-	<artifactId>javax.servlet-api</artifactId>
-	<version>3.1.0</version>
-	<scope>provided</scope>
-</dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
@@ -118,45 +130,48 @@
 
 
 		<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
-<dependency>
-    <groupId>com.mysql</groupId>
-    <artifactId>mysql-connector-j</artifactId>
-    <version>8.3.0</version>
-</dependency>
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<version>8.3.0</version>
+		</dependency>
 
 
 
-		
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok getter, setter, 생성자 등의 코드를 간소화-->
+
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok getter, 
+			setter, 생성자 등의 코드를 간소화 -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.18.30</version>
 			<scope>provided</scope>
 		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP JDBC 커넥션 풀-->
+
+		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP JDBC 커넥션 풀 -->
 		<dependency>
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
 			<version>5.1.0</version>
 		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis , MyBatis는 데이터베이스와 자바 객체 간의 매핑을 처리하는 SQL 매퍼 프레임워크-->
+
+		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis , MyBatis는 
+			데이터베이스와 자바 객체 간의 매핑을 처리하는 SQL 매퍼 프레임워크 -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
 			<version>3.5.14</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring , MyBatis와 스프링 프레임워크를 통합-->
+		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring , MyBatis와 
+			스프링 프레임워크를 통합 -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>3.0.0</version>
 		</dependency>
-		
-		<dependency>
+
+<dependency>
     <groupId>org.bgee.log4jdbc-log4j2</groupId>
     <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
     <version>1.16</version>

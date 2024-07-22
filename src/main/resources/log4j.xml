@@ -14,6 +14,10 @@
 	<logger name="com.board.controller">
 		<level value="info" />
 	</logger>
+	<logger name="com.board.service">
+		<level value="info"/>
+	</logger>
+	
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">

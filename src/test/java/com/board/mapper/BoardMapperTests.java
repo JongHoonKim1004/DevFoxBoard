@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.board.domain.BoardVO;
+import com.board.domain.Criteria;
 
 import lombok.extern.log4j.Log4j;
 
@@ -21,10 +22,12 @@ public class BoardMapperTests {
 	
 	@Test
 	public void insertTest() {
-		BoardVO board = BoardVO.builder().title("新しいタイトル").writer("新しい作成者").content("新しいコンテンツ").build();
 		
+		
+		for(int i = 0 ; i < 30 ; i++) {
+		BoardVO board = BoardVO.builder().title("新しいタイトル" + i).writer("新しい作成者").content("新しいコンテンツ").build();
 		mapper.create(board);
-		
+		}
 		log.info("Insert Complete");
 	}
 	
@@ -37,7 +40,7 @@ public class BoardMapperTests {
 	
 	@Test
 	public void selectOneTest() {
-		BoardVO board = mapper.getOneByBno(1);
+		BoardVO board = mapper.getOneByBno(48);
 		
 		log.info(board);
 	}
@@ -58,4 +61,14 @@ public class BoardMapperTests {
 		
 		log.info("Delete Completed");
 	}
+	
+	@Test
+	public void pagingTest() {
+		Criteria cri = new Criteria();
+		cri.setType("T");
+		cri.setKeyword("9");
+		
+		List<BoardVO> list = mapper.getListWithPaging(cri);
+		log.info(list);
+	} 
 }

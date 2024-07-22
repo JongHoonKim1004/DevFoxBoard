@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.board.domain.BoardVO;
+import com.board.domain.Criteria;
+import com.board.domain.PageDTO;
 import com.board.service.BoardService;
 
 import lombok.extern.log4j.Log4j;
@@ -32,26 +35,31 @@ public class BoardController {
 	private BoardService boardService;
 	
 	@GetMapping("/list")
-	public String getList(Model model){
+	public String getList(Model model, @ModelAttribute Criteria cri){
 		/**
 		 * 掲示板ページにアクセスする際、すべての書き込みを呼び出し
 		 * 、VIEWから表示できるようにします 
 		 */
-		List<BoardVO> list = boardService.getList();
+		log.info(cri.toString());
+		List<BoardVO> list = boardService.getListWithPaging(cri);
 		
+		int total = boardService.countTotalBoard();
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
 		model.addAttribute("list", list);
 		
 		return "/board/list";
 	}
 	
 	@GetMapping("/{bno}")
-	public String getOneByBno(@PathVariable int bno, Model model) {
+	public String getOneByBno(@PathVariable int bno, Model model, @ModelAttribute("cri") Criteria cri) {
 		/**
 		 * 　書き込みのタイトルをクリックすると書き込み番号の書き込みを呼び出し
 		 * 　その内容をVIEWから表示できるようにします
 		 */
 		BoardVO board = boardService.viewBoard(bno);
 		
+		int total = boardService.countTotalBoard();
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
 		model.addAttribute("board", board);
 		
 		return "/board/get";
@@ -66,11 +74,12 @@ public class BoardController {
 	}
 	
 	@PostMapping("/create")
-	public String postCreateBoard(@RequestBody BoardVO board, RedirectAttributes rttr) {
+	public String postCreateBoard(@ModelAttribute BoardVO board, RedirectAttributes rttr) {
 		/**
 		 * 新しい書き込みを登録します。
 		 * 登録を完了すると掲示板ページにリダイレクトするとともにメッセージを送ります
 		 */
+		log.info(board.toString());
 		log.info("Create Board Start");
 		boardService.create(board);
 		log.info("Create Board End");
@@ -95,11 +104,12 @@ public class BoardController {
 	}
 	
 	@PostMapping("/update")
-	public String postUpdateBoard(@RequestBody BoardVO board, RedirectAttributes rttr) {
+	public String postUpdateBoard(@ModelAttribute BoardVO board, RedirectAttributes rttr) {
 		/**
 		 * 修正した書き込みを適用するようにします。
 		 * 適用のあと、掲示板ページにリダイレクトすると共にメッセージを送ります
 		 */
+		log.info(board.toString());
 		log.info("Update Board Start");
 		boardService.update(board);
 		log.info("Update Board End");

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.board.domain.BoardVO;
+import com.board.domain.Criteria;
 import com.board.mapper.BoardMapper;
 
 import lombok.extern.log4j.Log4j;
@@ -23,6 +24,12 @@ public class BoardService {
 	@Autowired
 	private BoardMapper mapper;
 	
+	public int countTotalBoard() {
+		// 書き込みの数を見せます
+		return mapper.countTotalBoard();
+	}
+	
+	
 	@Transactional
 	public void create(BoardVO board) {
 		//　新しい書き込みを作るビジネスロジック
@@ -31,6 +38,14 @@ public class BoardService {
 		//　ロジックの遂行が終了したらログを残します
 		log.info("Board Created");
 		
+	}
+	
+	public List<BoardVO> getListWithPaging(Criteria cri){
+		log.info("Service Checking");
+		log.info(cri.toString());
+		List<BoardVO> list = mapper.getListWithPaging(cri);
+		
+		return list;
 	}
 	
 	public List<BoardVO> getList(){
@@ -93,4 +108,6 @@ public class BoardService {
 		//　ロジックの遂行が終了したらログを残します
 		log.info(bno + "'s board deleted");
 	}
+	
+	
 }
