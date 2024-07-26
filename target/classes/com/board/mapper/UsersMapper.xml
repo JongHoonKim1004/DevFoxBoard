@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.board.mapper.UsersMapper">
+	<resultMap type="com.board.domain.UsersVO" id="usersMap">
+		<id property="uno" column="uno"/>
+		<result property="uno" column="uno"/>
+		<result property="username" column="username"/>
+		<result property="password" column="password"/>
+		<result property="nickname" column="nickname"/>
+		<result property="email" column="email"/>
+		<collection property="authList" resultMap="authMap"></collection>
+	</resultMap>
+	
+	<resultMap type="com.board.domain.UsersAuthVO" id="authMap">
+		<result property="uno" column="uno"/>
+		<result property="auth"  column="auth"/>
+	</resultMap>
+	
+	<select id="getList" resultType="com.board.domain.UsersVO">
+		select * from users where uno > 0 order by uno desc
+	</select>
+	
+	<select id="read" resultMap="usersMap">
+		select users.uno, username, password, nickname, email, auth
+		from
+			users left outer join users_auth auth on users.uno = auth.uno
+		
+		where users.username = #{username}
+	</select>
+	
+	<select id="getOneByUno" resultType="com.board.domain.UsersVO">
+		select * from users where uno = #{uno}
+	</select>
+	
+	<insert id="createUser">
+		insert into users(username, nickname, password, email)
+		values(#{username}, #{nickname}, #{password}, #{email})
+	</insert>
+	
+	<insert id="createUsersAuth">
+		insert into users_auth(uno, auth) values(#{uno}, 'ROLE_USER')
+	</insert>
+	
+	<update id="updateUser">
+		update users set 
+			nickname = #{nickname},
+			password = #{password},
+			email = #{email}
+		where uno = #{uno}
+	</update>
+	
+	<delete id="deleteUser">
+		delete from users where uno = #{uno}
+	</delete>
+</mapper>

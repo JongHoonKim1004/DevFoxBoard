@@ -22,6 +22,7 @@
 				</tr>
 			</thead>
 			<tbody style="text-align: center;">
+				<!-- サーバーから貰ったリストを見せます。 -->
 				<c:forEach items="${list }" var="board">
 					<tr>
 						<td>${board.bno }</td>
@@ -94,11 +95,13 @@
 </div>
 
 <script>
+	//　書き込みを削除した後メッセージをみせます。
 	const message = `${message}`;
 	if (message != ``) {
 		alert(message);
 	}
 
+	// 検索する際にタイプとキーワードを確認します。
 	function searchFormCheck(){
 		if($("#nullSelect").has("selected")){
 			alert("検索するタイプを選んでください。");
@@ -112,9 +115,11 @@
 		return true;
 	}
 	
+	
 	$(document).ready(function() {
 		var actionForm = $("#actionForm");
 
+		// ページ番号をクリックすると押した番号のページへ移動します。
 		$(".paginate_button a").on("click", function(e) {
 			e.preventDefault();
 			console.log("click");
@@ -125,6 +130,7 @@
 			actionForm.submit();
 		});
 
+		// 書き込みのタイトルをクリックするとページング情報と一緒に移動します。
 		$(".move").on("click", function(e) {
 			e.preventDefault();
 
@@ -135,5 +141,4 @@
 		
 	});
 </script>
-</body>
-</html>
+<%@ include file="../includes/footer.jsp" %>

@@ -9,8 +9,8 @@
 	</select>
 
 	<insert id="create">
-		insert into board(title, writer, content)
-		values(#{title}, #{writer}, #{content})
+		insert into board(title, writer, content, writerId)
+		values(#{title}, #{writer}, #{content}, #{writerId})
 	</insert>
 
 	<update id="update" parameterType="com.board.domain.BoardVO">

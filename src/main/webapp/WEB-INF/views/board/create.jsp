@@ -12,13 +12,15 @@
         <div class="row">
             <div class="col-md-12">
                 <form action="/board/create" name="frm" method="post" accept-charset="UTF-8">
+                	<sec:csrfInput/>
                     <div class="form-group">
                         <label for="title">タイトル</label>
                         <input type="text" name="title" id="title" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="writer">作成者</label>
-                        <input type="text" name="writer" id="writer" class="form-control">
+                        <input type="text" name="writer" id="writer" class="form-control" value="${users.nickname }" readonly="readonly">
+                        <input type="hidden" name="writerId" id="writerId" value="${users.username }">
                     </div>
                     <div class="form-group">
                         <label for="">本文</label>
@@ -35,6 +37,7 @@
     
     <script>
     function formCheck(){
+    	//　書き込みを登録する前に情報の確認をします。
     	if(document.frm.title.value.trim() == ""){
     		alert("タイトルを作成してください。");
     		return false;
@@ -52,5 +55,4 @@
     	
     }
     </script>
-</body>
-</html>
+<%@ include file="../includes/footer.jsp" %>

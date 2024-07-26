@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class PageDTO {
 	/**
-	 * 
+	 * Paginationでページ数とそれに関するセッティングです。
 	 */
 	
 	private int startPage;

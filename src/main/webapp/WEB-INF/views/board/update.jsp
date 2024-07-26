@@ -38,6 +38,7 @@
 </div>
 </div>
 <script>
+//　タイトルと本文の確認を行います。
 function formCheck(){
 	if(document.frm.title.value.trim() == ""){
 		alert("タイトルを作成してください。");
@@ -55,5 +56,4 @@ function formCheck(){
 	return true;
 } 
 </script>
-</body>
-</html>
+<%@ include file="../includes/footer.jsp" %>

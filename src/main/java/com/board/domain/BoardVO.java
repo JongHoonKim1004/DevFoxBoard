@@ -20,7 +20,8 @@ import lombok.NoArgsConstructor;
 public class BoardVO {
 	public int bno; // 書き込み番号
 	public String title; //　タイトル
-	public String writer; //　作成者
+	public String writer; //　作成者のニックネーム
+	public String writerId; // 作成者のID
 	public String content; //　本文
 	public Date regDate; //　登録時間
 	public Date updateDate; //　修正時間
