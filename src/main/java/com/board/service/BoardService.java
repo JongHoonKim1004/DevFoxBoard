@@ -17,7 +17,7 @@ import lombok.extern.log4j.Log4j;
 /**
  * 
  * @author PC
- * 掲示板に関するビジネスロジックを遂行します。
+ * 掲示板に関する機能を集めたクラスです。
  * 
  */
 public class BoardService {

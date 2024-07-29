@@ -15,7 +15,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class UsersService {
 	/**
-	 * 
+	 * ユーザー情報に関する機能です。
 	 */
 	
 	@Autowired
@@ -25,14 +25,14 @@ public class UsersService {
 	
 	public List<UsersVO> getList(){
 		/**
-		 * 
+		 * ユーザーリストを呼びます。
 		 */
 		return mapper.getList();
 	}
 	
 	public UsersVO read(String username) {
 		/**
-		 * 
+		 * IDからユーザー情報を呼びます。
 		 */
 		
 		return mapper.read(username);
@@ -40,15 +40,32 @@ public class UsersService {
 	
 	public UsersVO getOneByUno(int uno) {
 		/**
-		 * 
+		 * ユーザー番号から情報を呼びます。
 		 */
 		
 		return mapper.getOneByUno(uno);
 	}
 	
+	public UsersVO getOneByEmail(String email) {
+		/**
+		 * メールアドレスからユーザー情報を呼びます。
+		 * 情報がない場合、nullを返します。
+		 */
+		
+		UsersVO user = mapper.getOneByEmail(email);
+		
+		if(user == null || user.getUno() == 0) {
+			return null;
+		} else {
+			return user;
+		}
+		
+	}
+	
 	public void createUser(UsersVO user) {
 		/**
-		 * 
+		 * 新しいユーザーを作ります。
+		 * ユーザー情報を作った後、権限リストを作ります。
 		 */
 		String encodedPassword = encoder.encode(user.getPassword());
 		user.setPassword(encodedPassword);
@@ -61,15 +78,17 @@ public class UsersService {
 	
 	public int updateUser(UsersVO user) {
 		/**
-		 * 
+		 * ユーザー情報を更新します。
 		 */
+		String encodedPassword = encoder.encode(user.getPassword());
+		user.setPassword(encodedPassword);
 		
 		return mapper.updateUser(user);
 	}
 	
 	public void deleteUser(int uno) {
 		/**
-		 * 
+		 * ユーザー情報を削除します。
 		 */
 		
 		mapper.deleteUser(uno);

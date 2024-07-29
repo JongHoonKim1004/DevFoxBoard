@@ -16,7 +16,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class ReplyService {
 	/**
-	 * 
+	 * リプライに関する機能を集めたクラスです。
 	 */
 	
 	@Autowired
@@ -25,7 +25,7 @@ public class ReplyService {
 	
 	public List<ReplyVO> getList(int bno){
 		/**
-		 * 
+		 * 指定した書き込みに書かれたリプライを呼びます。
 		 */
 		
 		List<ReplyVO> list = mapper.getList(bno);
@@ -34,7 +34,7 @@ public class ReplyService {
 	
 	public ReplyVO getOneByRno(int rno) {
 		/**
-		 * 
+		 * 指定したリプライを呼びます。
 		 */
 		ReplyVO reply = mapper.getOneByRno(rno);
 		return reply;
@@ -43,7 +43,7 @@ public class ReplyService {
 	@Transactional
 	public void createReply(ReplyVO reply) {
 		/**
-		 * 
+		 * 新しいリプライを作ります。
 		 */
 		
 		log.info("Create Reply Start");
@@ -54,7 +54,7 @@ public class ReplyService {
 	@Transactional
 	public void updateReply(ReplyVO reply) {
 		/**
-		 * 
+		 * リプライを更新します。
 		 */
 		
 		int result = mapper.update(reply);
@@ -64,7 +64,7 @@ public class ReplyService {
 	@Transactional
 	public void deleteReply(int rno) {
 		/**
-		 * 
+		 * リプライを削除します。
 		 */
 		
 		mapper.delete(rno);

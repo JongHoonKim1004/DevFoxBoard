@@ -16,11 +16,11 @@ public class UsersVO {
 	 * ユーザーの基本的な構造です。
 	 */
 	
-	private int uno; //
-	private String username; //
-	private String password; //
-	private String nickname; //
-	private String email; //
+	private int uno; // ユーザー番号
+	private String username; //　ID
+	private String password; //　パスワード
+	private String nickname; //　ニックネーム
+	private String email; //　メールアドレス
 	
-	private List<UsersAuthVO> authList; //
+	private List<UsersAuthVO> authList; //　権限リスト
 }

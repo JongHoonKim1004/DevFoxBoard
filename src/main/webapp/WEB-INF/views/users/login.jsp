@@ -10,6 +10,7 @@
 					</div>
 					<div class="panel-body">
 						<form action="/login" method="post" name="frm">
+							<sec:csrfInput/>
 							<fieldset>
 								<div class="form-group">
 									<input class="form-control" placeholder="ID" name="username"
@@ -23,8 +24,7 @@
 								<!-- Change this to a button or input when using this as a form -->
 								<input type="submit" value="ログイン"
 									class="btn btn-lg btn-success btn-block"
-									onclick="return loginCheck()"> <input type="hidden"
-									name="${_csrf.parameterName }" value="${_csrf.token }">
+									onclick="return loginCheck()">
 								
 							</fieldset>
 						</form>

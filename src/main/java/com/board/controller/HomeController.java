@@ -26,7 +26,7 @@ public class HomeController {
 	public String home(Locale locale) {
 		
 		
-		return "redirect:/board/list";
+		return "/home";
 	}
 	
 }

@@ -16,11 +16,11 @@ public class ReplyVO {
 	 * リプライの構造です。
 	 */
 	
-	private int rno;
-	private int bno;
-	private String reply;
-	private String writer;
-	private String writerId;
-	private Date regDate;
-	private Date updateDate;
+	private int rno; // リプライ番号
+	private int bno; //　リプライを書いた書き込みの番号
+	private String reply; // リプライ本文
+	private String writer; // 作成者のニックネーム
+	private String writerId; // 作成者のID
+	private Date regDate; //　登録時間
+	private Date updateDate; //　修正時間
 }

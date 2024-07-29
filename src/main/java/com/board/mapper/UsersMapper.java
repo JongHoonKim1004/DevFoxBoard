@@ -16,4 +16,6 @@ public interface UsersMapper {
 	public void createUsersAuth(int uno); // ユーザーの権限を登録します。
 	public int updateUser(UsersVO user); //　ユーザー情報を修正します。
 	public void deleteUser(int uno); //　ユーザー情報を削除します。
+	
+	public UsersVO getOneByEmail(String email); // メールアドレスからIDを探します。
 }

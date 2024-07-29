@@ -52,4 +52,8 @@
 	<delete id="deleteUser">
 		delete from users where uno = #{uno}
 	</delete>
+	
+	<select id="getOneByEmail" resultType="com.board.domain.UsersVO">
+		select * from users where email = #{email}
+	</select>
 </mapper>
